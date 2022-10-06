@@ -4,13 +4,21 @@ Simple helper package to set up Pprof debug server. Minimal code footprint on ap
 
 - Includes `net/http/pprof`
 - Creates the http debug server on `http://localhost:9407`
+- Can optionally using the `go tool pprof` to take PNG snapshots at desired interval**
 
+** Must be installed, with depenedencies for creating images.
 ### Usage
 
 1. Include the package.
 2. Call `pprof.Start()` at top of `main`
-3. Optionally call `defer pprof.Hold()` for programs that will otherwise exit
+3. Optionally call `defer pprof.Hold()` for programs that would otherwise exit but you wish to inspect
 
+### Snapshots
+To capture heap diagrams in `.png` format at a specified interval, pass an optional `snapshotInterval` when starting i.e. 
+`pprof.Start(2 * time.Second)`. Files will be written with timestamps to the current directory.
+
+If using`pprof.Hold()`the snapshots will continue at the interval while holding. If not required pass `true` to the 
+optional `cancelSnapshot` parameter. i.e. `pprof.Hold(true)`.
 
 ### Example
 
