@@ -76,3 +76,7 @@ func main(){
 ### License
 
 MIT
+
+### Useful links
+[Profiling Go with Pprof](https://jvns.ca/blog/2017/09/24/profiling-go-with-pprof/). A comprehensive article on how to interpret
+the output of the debug server.
